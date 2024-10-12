@@ -16,11 +16,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: make
+      - uses: actions/setup-node@v4
+      - run: |
+          npm install -g gatsby-cli
+          gatsby build
       - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1
-         if: ${{ success() && github.ref == 'refs/heads/main' }}
         with:
           api_token: ${{ secrets.NEOCITIES_API_KEY }}
           cleanup: true
-          dist_dir: _site
+          dist_dir: field-notes-app/public
