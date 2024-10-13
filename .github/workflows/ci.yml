@@ -22,7 +22,6 @@ jobs:
         with:
           node-version: latest
       - uses: bahmutov/npm-install@v1
-      - run: npm t
       - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1
         with:
