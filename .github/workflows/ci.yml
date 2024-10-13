@@ -13,16 +13,17 @@ concurrency: # prevent concurrent deploys doing strange things
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-      - run: |
-          npm install -g gatsby-cli
+        with:
+          node-version: 18
+      - run:
+          npm clean-install
           gatsby build
       - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1
         with:
           api_token: ${{ secrets.NEOCITIES_API_KEY }}
           cleanup: true
-          dist_dir: field-notes-app/public
+          dist_dir: public
