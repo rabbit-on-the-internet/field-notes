@@ -27,6 +27,7 @@ jobs:
       - name: Install dependencies & build
         run: npm i
               gatsby build
+        working-directory: /home/runner/work/field-notes/public
       - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1
         with:
