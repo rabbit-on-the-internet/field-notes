@@ -31,7 +31,6 @@ jobs:
       - name: Checkout public repo
         uses: actions/checkout@v4
         with:
-          repository: rabbit/field-notes
           path: field-notes/public
       - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1
