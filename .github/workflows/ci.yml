@@ -17,7 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and test
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Use Node
         uses: actions/setup-node@v4
         with:
@@ -27,7 +28,11 @@ jobs:
       - name: Install dependencies & build
         run: npm i
               gatsby build
-        working-directory: /home/runner/work/field-notes/public
+      - name: Checkout public repo
+        uses: actions/checkout@v4
+        with:
+          repository: field-notes/public
+          path: public
       - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1
         with:
