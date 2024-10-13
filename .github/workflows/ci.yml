@@ -30,9 +30,6 @@ jobs:
               gatsby build
       - name: Checkout public repo
         uses: actions/checkout@v4
-        with:
-          repository: field-notes/public
-          path: public
       - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1
         with:
