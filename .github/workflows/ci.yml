@@ -18,11 +18,15 @@ jobs:
     name: Build and test
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Use Node
+        uses: actions/setup-node@v4
         with:
           node-version: latest
-      - uses: bahmutov/npm-install@v1
-      - run: npm i
+      - name: Use NPM
+        uses: bahmutov/npm-install@v1
+      - name: Install dependencies & build
+        run: npm i
+              gatsby build
       - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1
         with:
